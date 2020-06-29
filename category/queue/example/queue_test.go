@@ -1,6 +1,9 @@
 package example
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestArrayQueue(t *testing.T) {
 
@@ -21,4 +24,25 @@ func TestArrayQueue(t *testing.T) {
 	t.Log("查看队守元素: ", queue.GetFront())
 	t.Log("队列长度: ", queue.GetSize())
 
+}
+
+func TestLoopQueue(t *testing.T) {
+
+	queue := NewLoopQueue(10)
+
+	for i := 0; i < 10; i++ {
+		queue.Enqueue(i)
+		fmt.Println(queue)
+		if i%3 == 2 {
+			queue.Dequeue()
+			fmt.Println(queue)
+		}
+	}
+
+}
+
+//  测试数组队列和循环队列的速度
+func TestCompareOfArrayQueueAndLoopQueue(t *testing.T) {
+
+	
 }
