@@ -2,7 +2,9 @@ package example
 
 import (
 	"fmt"
+	"math/rand"
 	"testing"
+	"time"
 )
 
 func TestArrayQueue(t *testing.T) {
@@ -44,5 +46,42 @@ func TestLoopQueue(t *testing.T) {
 //  测试数组队列和循环队列的速度
 func TestCompareOfArrayQueueAndLoopQueue(t *testing.T) {
 
-	
+	opCount := 100000
+
+	t.Run("Array Queue", func(t *testing.T) {
+
+		start := time.Now()
+
+		queue := NewArrayQueue(10)
+
+		for i := 0; i < opCount; i++ {
+			queue.Enqueue(rand.Int())
+		}
+
+		for i := 0; i < opCount; i++ {
+			queue.Dequeue()
+		}
+
+		end := time.Now()
+		fmt.Println("Array Queue time", end.Sub(start).Seconds())
+	})
+
+	t.Run("Loop Queue", func(t *testing.T) {
+
+		start := time.Now()
+
+		queue := NewLoopQueue(10)
+
+		for i := 0; i < opCount; i++ {
+			queue.Enqueue(rand.Int())
+		}
+
+		for i := 0; i < opCount; i++ {
+			queue.Dequeue()
+		}
+
+		end := time.Now()
+		fmt.Println("Loop Queue time:", end.Sub(start).Seconds())
+	})
+
 }
