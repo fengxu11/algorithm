@@ -65,3 +65,17 @@ contains(data)      O(n)
     3. 从 head删除元素、 从tail插入元素
 
 ```
+
+
+### LeetCode 203. remove-linked-list-elements
+```
+
+删除链表中 等于给定值 val的所有节点
+
+示例: 
+    输入: 1->2->6->3->4->5->6, val = 6
+    输出: 1->2->3->4->5
+
+代码在: 203_remove-element_test.go
+
+```
