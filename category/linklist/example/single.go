@@ -116,6 +116,28 @@ func (s *SingleLinkList) Set(index int, data interface{}) {
 	current.data = data
 }
 
+// Del 删除元素
+func (s *SingleLinkList) Del(index int) interface{} {
+
+	if index < 0 || index > s.size {
+		panic("Add error. index error")
+	}
+
+	prev := s.dummyHead
+
+	for i := 0; i < index; i++ {
+		prev = prev.next
+	}
+
+	delNode := prev.next
+	prev.next = delNode.next
+	delNode.next = nil
+
+	s.size--
+
+	return delNode.data
+}
+
 // Contains 链表中是否有这个元素
 func (s *SingleLinkList) Contains(data interface{}) bool {
 

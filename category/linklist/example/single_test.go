@@ -36,4 +36,7 @@ func TestFunc(t *testing.T) {
 
 	fmt.Println("")
 
+	fmt.Println("删除位置为1 的元素: ", singleLinkList.Del(1))
+	fmt.Println(singleLinkList)
+
 }
