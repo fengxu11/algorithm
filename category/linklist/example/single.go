@@ -138,6 +138,18 @@ func (s *SingleLinkList) Del(index int) interface{} {
 	return delNode.data
 }
 
+// RemoveLast 删除第一个元素
+func (s *SingleLinkList) RemoveFirst() interface{} {
+
+	return s.Del(0)
+}
+
+// RemoveLast 删除最后一个元素
+func (s *SingleLinkList) RemoveLast() interface{} {
+
+	return s.Del(s.size - 1)
+}
+
 // Contains 链表中是否有这个元素
 func (s *SingleLinkList) Contains(data interface{}) bool {
 
