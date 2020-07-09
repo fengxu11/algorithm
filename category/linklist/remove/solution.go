@@ -1,4 +1,4 @@
-package recursion
+package remove
 
 func removeElementsByFor(head *ListNode, val int) *ListNode {
 

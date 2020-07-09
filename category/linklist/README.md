@@ -1,4 +1,4 @@
-### 链表 LinkList
+### 一、链表 LinkList
 
 > single.go
 
@@ -67,7 +67,7 @@ contains(data)      O(n)
 ```
 
 
-### LeetCode 203. remove-linked-list-elements
+### LeetCode 203. solution_test
 ```
 
 删除链表中 等于给定值 val的所有节点
@@ -79,3 +79,14 @@ contains(data)      O(n)
 代码在: 203_remove-element_test.go
 
 ```
+
+### 二、双链表
+
+
+
+### 三、循环链表
+
+
+
+###  四、数组链表
+
