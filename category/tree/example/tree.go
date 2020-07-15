@@ -3,7 +3,8 @@ package example
 import (
 	"bytes"
 	"fmt"
-	"github.com/algorithm/category/stack/example"
+	queue "github.com/algorithm/category/linklist/example"
+	stack "github.com/algorithm/category/stack/example"
 
 	"github.com/algorithm/category/common"
 )
@@ -187,7 +188,7 @@ func generateDepthString(depth int) string {
 
 // 非递归 二分搜索树 前序遍历、使用栈模拟系统栈 进行非递归遍历
 func (b *BST) preOrderNR() {
-	stack := example.New()
+	stack := stack.New()
 	stack.Push(b.root)
 	// 栈不为空、就一直循环
 	for !stack.IsEmpty() {
@@ -206,7 +207,24 @@ func (b *BST) preOrderNR() {
 	}
 }
 
+// 层序遍历 一层一层的遍历、从根节点遍历、根节点的层级一般定义为 0
+// 使用 链表进行 层序遍历
+func (b *BST) levelOrder() {
 
+	q := queue.NewLinkListQueue()
+	q.Enqueue(b.root)
 
-
+	for !q.IsEmpty() {
+		cur := q.Dequeue()
+		if node, ok := cur.(*Node); ok {
+			fmt.Println(node.Data)
+			if node.Left != nil {
+				q.Enqueue(node.Left)
+			}
+			if node.Right != nil {
+				q.Enqueue(node.Right)
+			}
+		}
+	}
+}
 

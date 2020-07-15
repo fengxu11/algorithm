@@ -32,5 +32,9 @@ func TestNewBST(t *testing.T) {
 
 	//bst.PostOrder()
 
-	bst.preOrderNR()
+	// 非递归(循环+栈) 前序遍历
+	//bst.preOrderNR()
+
+	// 层序遍历 循环 + 队列(或链表)
+	bst.levelOrder()
 }
