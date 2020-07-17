@@ -228,3 +228,94 @@ func (b *BST) levelOrder() {
 	}
 }
 
+/*
+	删除二分搜索树中的 最小值
+*/
+
+
+// 查找二分搜索树中的 最小值
+func (b *BST) Minimum() *Node {
+
+	if b.size == 0 {
+		panic("BST is empty.")
+	}
+
+	return minimum(b.root)
+}
+
+func minimum(node *Node) *Node {
+	if node.Left == nil {
+		return node
+	}
+	return minimum(node.Left)
+}
+
+// 删除二分搜索树中的 最小值
+func (b *BST) RemoveMin() *Node {
+	ret := b.Minimum()
+	b.removeMin(b.root)
+	return ret
+
+}
+
+func (b *BST) removeMin(node *Node) *Node {
+
+	// 左子树
+	if node.Left == nil {
+		// 保存当前节点的右子树、可能是空的
+		rightNode := node.Right
+		node.Right = nil
+		b.size --
+		return rightNode
+	}
+
+	// 删除 node左子树对应的结果值
+	node.Left = b.removeMin(node.Left)
+	return node
+}
+
+/*
+	删除二分搜索树中的 最小值 和 最大值
+*/
+
+// 查找二分搜索树中的 最大值
+func (b *BST) Maximum() *Node {
+
+	if b.size == 0 {
+		panic("BST is empty.")
+	}
+
+	return maximum(b.root)
+}
+
+func maximum(node *Node) *Node {
+	if node.Right == nil {
+		return node
+	}
+	return minimum(node.Right)
+}
+
+
+// 删除二分搜索树中的 最小值
+func (b *BST) RemoveMax() *Node {
+	ret := b.Maximum()
+	b.removeMax(b.root)
+	return ret
+
+}
+
+func (b *BST) removeMax(node *Node) *Node {
+
+	// 左子树
+	if node.Right == nil {
+		// 保存当前节点的右子树、可能是空的
+		leftNode := node.Left
+		node.Left = nil
+		b.size --
+		return leftNode
+	}
+
+	// 删除 node左子树对应的结果值
+	node.Right = b.removeMin(node.Right)
+	return node
+}
